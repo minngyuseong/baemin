@@ -1,0 +1,27 @@
+{
+  "name": "baemin",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:init": "docker run --name postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydb -p 5432:5432 -d postgres:16",
+    "db:start": "docker start postgres",
+    "db:stop": "docker stop postgres || true",
+    "db:logs": "docker logs -f postgres",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm db:start && pnpm --filter backend dev",
+    "dev": "concurrently \"pnpm dev:frontend\" \"pnpm dev:backend\"",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "pnpm --filter backend build",
+    "build": "pnpm build:frontend && pnpm build:backend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.20.0"
+}

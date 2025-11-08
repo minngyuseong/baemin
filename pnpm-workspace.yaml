@@ -1,0 +1,4 @@
+packages:
+  - "apps/frontend"
+  - "apps/backend"
+  - "packages/*" # 나중에 공통 라이브러리 만들고 싶으면 쓰고, 지금은 있어도 문제 없음
